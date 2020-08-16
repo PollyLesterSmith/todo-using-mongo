@@ -1,0 +1,46 @@
+#mainHeader {
+    font-size: 50px;
+    font-family: Raleway;
+}
+
+body {
+    background-color: #666666;
+    color: white;
+    font-family: Manrope;
+    font-size: 25px;
+    font-weight: 200;
+}
+
+a {
+    font-size:10px;
+    text-decoration: none;
+    color: ivory;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: ivory;
+}
+
+
+
+input[type="submit"] {
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    font-family: Manrope;
+    font-size: 20px;
+    padding: 20px;
+}
+
+textarea {
+    background-color: teal;
+    margin:50px;
+    font-family: Source Serif Pro;
+    font-size: 16px;
+}
+
+form { 
+    text-align: center;
+}
