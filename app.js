@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
         fs.readFile(path.join(__dirname, 'index-mongo.html'), (err, content => {
             if (err) throw err;
             res.end(content);
-        })
+        }))
     }
 });
 
