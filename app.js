@@ -6,10 +6,12 @@ const fs = require('fs');
 const server = http.createServer((req, res) => {
     if(req.url === '/') {
         console.log('request received');
-        fs.readFile(path.join(__dirname, 'index-mongo.html'), (err, content => {
+        const serveFilename = path.join(__dirname, 'index-mongo.html');
+        console.log(serveFilename);
+        fs.readFile(serveFilename, (err, content) => {
             if (err) throw err;
             res.end(content);
-        }))
+        })
     }
 });
 
