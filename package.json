@@ -2,9 +2,9 @@
   "name": "mongo-app-1",
   "version": "1.0.0",
   "description": "",
-  "main": "todo-mongo.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node todo-mongo",
+    "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
