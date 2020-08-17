@@ -10,9 +10,9 @@ const server = http.createServer((req, res) => {
     let extName = path.extname(filePath);
     let contentType = "text/html";
     switch (extName) {
-        case 'html' : contentType = "text/html"
+        case '.html' : contentType = "text/html"
         break;
-        case 'css' : contentType = "text/css"
+        case '.css' : contentType = "text/css"
         break;
     }
         
