@@ -24,10 +24,8 @@ const server = http.createServer((req, res) => {
 
     function renderContent(content) {
         res.write(content)
+        res.end();
     }
-
-    res.end();
-
 });
 
 
