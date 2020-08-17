@@ -10,13 +10,15 @@ const server = http.createServer((req, res) => {
             if (err) throw err;
             renderContent(content);
         })
+        
+        function renderContent(content) {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(content);
+        }
     }
 });
 
-function renderContent(content) {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end(content);
-}
+
 
 
 const PORT = process.env.PORT || 3000;
