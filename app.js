@@ -6,15 +6,17 @@ const fs = require('fs');
 const server = http.createServer((req, res) => {
      if(req.url === '/') {
         const serveFilename = path.join(__dirname, 'index-mongo.html');
-        
-        fs.readFileSync(serveFilename, (err, content) => {
+        fs.readFile(serveFilename, (err, content) => {
             if (err) throw err;
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(content);
+            renderContent(content);
         })
     }
 });
 
+function renderContent(content) {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(content);
+}
 
 
 const PORT = process.env.PORT || 3000;
