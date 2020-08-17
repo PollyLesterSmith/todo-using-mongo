@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 const server = http.createServer((req, res) => {
-/*     if(req.url === '/') {
+     if(req.url === '/') {
         console.log('request received');
         const serveFilename = path.join(__dirname, 'index-mongo.html');
         console.log(serveFilename);
@@ -13,9 +13,9 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(content);
         })
-    } */
+    }
     res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end('Is it a problem with the request itself?');
+    res.end(content);
 });
 
 
