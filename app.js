@@ -8,8 +8,7 @@ const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongod
 mongoClient.connect(uri, () => {
     const currentTodos = db.todoText.find();
 });
-const currentTextarea = document.querySelector('#mainText');
-currentTextarea.value = currentTodos;
+
 
 const server = http.createServer((req, res) => {
 
@@ -32,6 +31,10 @@ const server = http.createServer((req, res) => {
 
     function renderContent(content) {
         res.write(content)
+        if (extName = 'html') {
+            const currentTextarea = document.querySelector('#mainText');
+            currentTextarea.value = currentTodos;
+        }
         res.end();
     }
 });
