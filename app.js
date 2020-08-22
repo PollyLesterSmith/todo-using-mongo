@@ -7,9 +7,9 @@ const mongoClient = require('mongodb');
 const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongodb.net/todos?retryWrites=true&w=majority`;
 mongoClient.connect(uri, () => {
     const currentTodos = db.todoText.find();
-    let currentTextarea = document.querySelector(#mainText);
-    let currentTextarea.value = currentTodos;
 });
+let currentTextarea = document.querySelector(#mainText);
+let currentTextarea.value = currentTodos;
 
 const server = http.createServer((req, res) => {
 
