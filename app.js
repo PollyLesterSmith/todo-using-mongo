@@ -2,23 +2,21 @@ const http = require('http');
 const path = require('path');
 const fs = require('fs');
 const accessPass = require('./access.js')
+const mongodb = require('mongodb');
 
-const mongoClient = require('mongodb');
+const MongoClient = mongodb.MongoClient();
 const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongodb.net/todos?retryWrites=true&w=majority`;
 
 var currentTodos;
-mongoClient.connect(uri, (err, db) => {
-    processdbResult(db);
-});
-
-function processdbResult(db) {
-    db.collection('todoText', function(err, collection) {
-        collection.find().toArray(function(err, results) {
-            currentTodos = results;
+MongoClient.connect(uri, (err, db) => {
+    if (err) {console.log(err)} else {
+        db.collection('todoText', (err, collection) => {
+            collection.find().toArray((err, results) => {
+                currentTodos = results;
+            });
         });
-    });
-}
-
+    }
+});
 
 
 const server = http.createServer((req, res) => {
