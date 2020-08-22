@@ -8,8 +8,8 @@ const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongod
 mongoClient.connect(uri, () => {
     const currentTodos = db.todoText.find();
 });
-let currentTextarea = document.querySelector('#mainText');
-let currentTextarea.value = currentTodos;
+const currentTextarea = document.querySelector('#mainText');
+currentTextarea.value = currentTodos;
 
 const server = http.createServer((req, res) => {
 
