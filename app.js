@@ -41,8 +41,10 @@ const server = http.createServer((req, res) => {
     function renderContent(content) {
         res.write(content)
         if (extName = 'html') {
-            const currentTextarea = document.querySelector('#mainText');
-            currentTextarea.value = currentTodos;
+            //const currentTextarea = document.querySelector('#mainText');
+            //currentTextarea.value = currentTodos;
+            console.log('######################');
+            console.log(currentTodos);
         }
         res.end();
     }
