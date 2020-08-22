@@ -4,7 +4,7 @@ const fs = require('fs');
 const accessPass = require('./access.js')
 const mongodb = require('mongodb');
 
-const MongoClient = mongodb.MongoClient();
+const MongoClient = mongodb.MongoClient;
 const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongodb.net/todos?retryWrites=true&w=majority`;
 
 var currentTodos;
