@@ -6,14 +6,18 @@ const accessPass = require('./access.js')
 const mongoClient = require('mongodb');
 const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongodb.net/todos?retryWrites=true&w=majority`;
 
-var currentTodos
+var currentTodos;
 mongoClient.connect(uri, (err, db) => {
+    processdbResult(db);
+});
+
+function processdbResult(db) {
     db.collection('todoText', function(err, collection) {
         collection.find().toArray(function(err, results) {
             currentTodos = results;
         });
     });
-});
+}
 
 
 
