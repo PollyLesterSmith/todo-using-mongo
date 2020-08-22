@@ -13,6 +13,8 @@ MongoClient.connect(uri, (err, db) => {
         db.collection('todoText', (err, collection) => {
             collection.find().toArray((err, results) => {
                 currentTodos = results;
+                console.log('???????????????????');
+                console.log(results);
             });
         });
     }
