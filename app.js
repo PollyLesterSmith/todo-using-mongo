@@ -1,10 +1,15 @@
-const mongoClient = require('mongodb');
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
 const accessPass = require('./access.js')
+
+const mongoClient = require('mongodb');
 const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongodb.net/todos?retryWrites=true&w=majority`;
-const client = new mongoClient(uri);
+mongoClient.connect(uri, () => {
+    const currentTodos = db.todoText.find();
+    const currentTextarea = document.querySelector(#mainText);
+    let currentTextarea.value = currentTodos;
+});
 
 const server = http.createServer((req, res) => {
 
