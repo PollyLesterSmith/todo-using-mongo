@@ -1,1 +1,3 @@
-export const accessPass = "FILO73930682sofem";
+const accessPass = "FILO73930682sofem";
+
+module.exports = accessPass;
