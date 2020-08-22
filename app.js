@@ -2,6 +2,9 @@ const mongodb = require('mongodb');
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
+const access = require('./access.js')
+const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongodb.net/todos?retryWrites=true&w=majority`;
+const client = new MongoClient(uri);
 
 const server = http.createServer((req, res) => {
 
