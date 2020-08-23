@@ -1,24 +1,11 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
+
 const accessPass = require('./access.js')
 const mongodb = require('mongodb');
-
 const MongoClient = mongodb.MongoClient;
 const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongodb.net/todos?retryWrites=true&w=majority`;
-
-var currentTodos;
-MongoClient.connect(uri, (err, client) => {
-    if (err) {console.log(`it DIDNT CONNECT because ${err}`)} else {
-        var db = client.db('todos');
-        db.collection('todoText', (err, collection) => {
-            collection.find().toArray( (err, results) => {
-                currentTodos = results;
-            });
-        });
-    }
-});
-
 
 const server = http.createServer((req, res) => {
 
@@ -45,17 +32,37 @@ const server = http.createServer((req, res) => {
 
         // If it's html, so in this case the main page render the todos
         if (extName = 'html') {
-            res.write('currentTodos');
-            filePath = path.join(__dirname, 'index-mongo-foot.html');
-            fs.readFile(filePath, (err, footcontent) => {
-                if (err) throw err;
-                renderFoot(footcontent);
+            
+            var currentTodos;
+            MongoClient.connect(uri, (err, client) => {
+                if (err) {console.log(`It DIDN'T CONNECT because ${err}`)} else {
+                    var db = client.db('todos');
+                    db.collection('todoText', (err, collection) => {
+                        collection.find().toArray( (err, results) => {
+                            currentTodos = results;
+                            res.write(currentTodos);
+                            initFootRender();
 
-                function renderFoot(contentToRend) {
-                    res.write(contentToRend);
-                    res.end();
+                            // Render the footer
+                            function initFootRender() {
+                                filePath = path.join(__dirname, 'index-mongo-foot.html');
+                                fs.readFile(filePath, (err, footcontent) => {
+                                    if (err) throw err;
+                                    renderFoot(footcontent);
+
+                                    function renderFoot(contentToRend) {
+                                        res.write(contentToRend);
+                                        res.end();
+                                    }
+                                })
+                            }
+                        });
+                    });
                 }
-            })
+            });
+
+
+
         } else { res.end(); }
     };
 
