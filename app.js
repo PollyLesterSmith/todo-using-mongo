@@ -49,14 +49,16 @@ const server = http.createServer((req, res) => {
             fs.readFile(filePath, (err, content) => {
                 if (err) throw err;
                 renderFoot(content);
+
+                function renderFoot(content) {
+                    res.write(content);
+                    res.end();
+                }
             })
         } else { res.end(); }
     };
 
-    function renderFoot(content) {
-        res.write(content);
-        res.end();
-    }
+
 
 });
 
