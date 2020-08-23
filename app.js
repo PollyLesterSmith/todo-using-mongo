@@ -10,13 +10,13 @@ const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongod
 var currentTodos;
 MongoClient.connect(uri, (err, db) => {
     if (err) {console.log(err)} else {
-        db.collection('todoText', (err, collection) => {
-            collection.find().toArray((err, results) => {
+        //db.collection('todoText', (err, collection) => {
+            db.todoText.find().toArray((err, results) => {
                 currentTodos = results;
                 console.log('???????????????????');
                 console.log(results);
             });
-        });
+        //});
     }
 });
 
