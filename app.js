@@ -40,7 +40,7 @@ const server = http.createServer((req, res) => {
                     db.collection('todoText', (err, collection) => {
                         collection.find().toArray( (err, results) => {
                             currentTodos = results;
-                            res.write(currentTodos.todoString);
+                            res.write(currentTodos[1].todoString);
                             initFootRender();
 
                             // Render the footer
