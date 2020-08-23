@@ -50,14 +50,14 @@ const server = http.createServer((req, res) => {
                 if (err) throw err;
                 renderFoot(content);
             })
-        };
+        } else { res.end(); }
     };
 
     function renderFoot(content) {
         res.write(content);
+        res.end();
     }
 
-    res.end();
 });
 
 
