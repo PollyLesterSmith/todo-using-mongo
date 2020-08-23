@@ -46,7 +46,7 @@ const server = http.createServer((req, res) => {
         // If it's html, so in this case the main page render the todos
         if (extName = 'html') {
             res.write('currentTodos');
-            filepath = path.join(__dirname, 'index-mongo-foot.html');
+            filePath = path.join(__dirname, 'index-mongo-foot.html');
             fs.readFile(filePath, (err, footcontent) => {
                 if (err) throw err;
                 renderFoot(footcontent);
