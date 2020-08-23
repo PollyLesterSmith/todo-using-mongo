@@ -47,9 +47,9 @@ const server = http.createServer((req, res) => {
         if (extName = 'html') {
             res.write('currentTodos');
             filepath = path.join(__dirname, 'index-mongo-foot.html');
-            fs.readFile(filePath, (err, content) => {
+            fs.readFile(filePath, (err, footcontent) => {
                 if (err) throw err;
-                renderFoot(content);
+                renderFoot(footcontent);
 
                 function renderFoot(contentToRend) {
                     res.write(contentToRend);
