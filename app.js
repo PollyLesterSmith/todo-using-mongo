@@ -25,7 +25,7 @@ MongoClient.connect(uri, function (err, client) {
 const server = http.createServer((req, res) => {
 
     // Init file path and content type
-    let filePath = (req.url === '/' ? path.join(__dirname, 'index-mongo.html') : path.join(__dirname, req.url));
+    let filePath = (req.url === '/' ? path.join(__dirname, 'index-mongo-head.html') : path.join(__dirname, req.url));
     let extName = path.extname(filePath);
     let contentType = "text/html";
     switch (extName) {
@@ -44,13 +44,20 @@ const server = http.createServer((req, res) => {
     function renderContent(content) {
         res.write(content)
         if (extName = 'html') {
-            //const currentTextarea = document.querySelector('#mainText');
-            //currentTextarea.value = currentTodos;
-            console.log('######################');
-            console.log(currentTodos);
-        }
-        res.end();
+            res.write(currentTodos);
+            filepath = path.join(__dirname, 'index-mongo-foot.html');
+            fs.readFile(filePath, (err, content) => {
+                if (err) throw err;
+                renderFoot(content);
+            })
+        };
+    };
+
+    function renderFoot(content) {
+        res.write(content);
     }
+
+    res.end();
 });
 
 
