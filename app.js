@@ -9,9 +9,9 @@ const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongod
 
 var currentTodos;
 MongoClient.connect(uri, function (err, db) {
-    if (err) {console.log(err)} else {
+    if (err) {console.log(`it DIDNT CONNECT because ${err}`)} else {
         db.collection('todoText', function (err, collection) {
-            db.todoText.find().toArray(function (err, results) {
+            collection.find().toArray(function (err, results) {
                 currentTodos = results;
                 console.log('???????????????????');
                 console.log(results);
