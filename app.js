@@ -8,15 +8,15 @@ const MongoClient = mongodb.MongoClient;
 const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongodb.net/todos?retryWrites=true&w=majority`;
 
 var currentTodos;
-MongoClient.connect(uri, (err, db) => {
+MongoClient.connect(uri, function (err, db) {
     if (err) {console.log(err)} else {
-        //db.collection('todoText', (err, collection) => {
-            db.todoText.find().toArray((err, results) => {
+        db.collection('todoText', function (err, collection) {
+            db.todoText.find().toArray(function (err, results) {
                 currentTodos = results;
                 console.log('???????????????????');
                 console.log(results);
             });
-        //});
+        });
     }
 });
 
