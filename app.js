@@ -14,8 +14,6 @@ MongoClient.connect(uri, function (err, client) {
         db.collection('todoText', function (err, collection) {
             collection.find().toArray(function (err, results) {
                 currentTodos = results;
-                console.log('???????????????????');
-                console.log(results.todoString);
             });
         });
     }
@@ -42,16 +40,19 @@ const server = http.createServer((req, res) => {
     })
 
     function renderContent(content) {
-        res.write(content)
+        // Render file contents
+        res.write(content);
+
+        // If it's html, so in this case the main page render the todos
         if (extName = 'html') {
-            res.write(currentTodos);
+            res.write('currentTodos');
             filepath = path.join(__dirname, 'index-mongo-foot.html');
             fs.readFile(filePath, (err, content) => {
                 if (err) throw err;
                 renderFoot(content);
 
-                function renderFoot(content) {
-                    res.write(content);
+                function renderFoot(contentToRend) {
+                    res.write(contentToRend);
                     res.end();
                 }
             })
