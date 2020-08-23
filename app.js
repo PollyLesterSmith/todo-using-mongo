@@ -8,7 +8,7 @@ const MongoClient = mongodb.MongoClient;
 const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongodb.net/todos?retryWrites=true&w=majority`;
 
 var currentTodos;
-MongoClient.connect(uri, function (err, db) {
+MongoClient.connect(uri, function (err, client) {
     if (err) {console.log(`it DIDNT CONNECT because ${err}`)} else {
         var db = client.db('todos');
         db.collection('todoText', function (err, collection) {
