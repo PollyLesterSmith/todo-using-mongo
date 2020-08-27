@@ -21,6 +21,7 @@ const server = http.createServer((req, res) => {
     }
         
     fs.readFile(filePath, (err, content) => {
+        console.log(`attempting to load ---> ${filePath}`);
         if (err) throw err;
         res.writeHead(200, { 'Content-Type': contentType });
         renderContent(content);
