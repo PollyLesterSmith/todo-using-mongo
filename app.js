@@ -10,6 +10,7 @@ const uri = `mongodb+srv://pollyadmin:${accessPass}@learningcluster.rsfog.mongod
 const server = http.createServer((req, res) => {
 
     // Init file path and content type
+    
     let filePath = (req.url === '/' ? path.join(__dirname, 'index-mongo-head.html') : path.join(__dirname, req.url));
     let extName = path.extname(filePath);
     let contentType = "text/html";
@@ -22,9 +23,10 @@ const server = http.createServer((req, res) => {
         
     fs.readFile(filePath, (err, content) => {
         console.log(`attempting to load ---> ${filePath}`);
-        if (err) throw err;
-        res.writeHead(200, { 'Content-Type': contentType });
-        renderContent(content);
+        if (err) throw err; else {
+            res.writeHead(200, { 'Content-Type': contentType });
+            renderContent(content);
+        }
     })
 
     function renderContent(content) {
