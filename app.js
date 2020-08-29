@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => {
         case '.css' : contentType = "text/css"
         break;
     }
-         
+        
     fs.readFile(filePath, (err, content) => {
         console.log(`attempting to load ---> ${filePath}`);
         if (err) throw err;
